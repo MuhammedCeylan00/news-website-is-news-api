@@ -1,12 +1,11 @@
-//import newsApi from './components/NewsApi';
-// import entartaintmentDetail from './components/EntartaintmentDetail';
-// import generalDetail from './components/GeneralDetail';
-// import healthDetail from './components/HealthDetail';
-// import scienceDetail from './components/ScienceDetail';
-// import sportsDetail from './components/SportsDetail';
-// import technologyDetail from './components/TechnologyDetail';
+import newsApi from './components/NewsApi';
+import entartaintmentDetail from './components/EntartaintmentDetail';
+import generalDetail from './components/GeneralDetail';
+import healthDetail from './components/HealthDetail';
+import scienceDetail from './components/ScienceDetail';
+import sportsDetail from './components/SportsDetail';
+import technologyDetail from './components/TechnologyDetail';
 import businesDetil from './components/BusinesDetail';
-import newsApi from './components/NewsApi'
 
 export default [
     { path: '/busines/:id', component: businesDetil },

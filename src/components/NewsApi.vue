@@ -14,7 +14,7 @@
        <div class="container">
         <div v-for='(item,index) in lists' :key="index" class="data">
           <div><h3>{{item.title}}</h3>{{item.content}}<button>
-            <router-link :to="`${urlData}/${index}`">Go to busines</router-link>
+            <router-link :to="`${urlData}/${index}`">Detail</router-link>
             </button><span>{{okundu}}</span></div>
             <router-view></router-view>
        </div>
@@ -144,9 +144,10 @@ button{
     width: 8rem;
     height: 2rem;
     margin: 0.5rem;
-    background-color: rgb(98, 98, 189);
+    background-color: rgb(175, 175, 196);
     color:white;
     border-radius: 10px;
+    margin-top: 200px;
 }
 .container{
    max-width: 1250px;
@@ -159,10 +160,14 @@ button{
   border: 1px solid rgb(63, 30, 209);
   float: left;
   width: 400px;
+  height: 400px;
 }
 .desc{
   padding: 15px;
   text-align: center;
+}
+button :visited{
+  background-color: aliceblue;
 }
 
 </style>
