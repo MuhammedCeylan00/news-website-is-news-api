@@ -36,6 +36,7 @@ import axios from "axios";
 export default {
   name: 'NewsApi',
   mounted() {
+    this.category="topheadlines";
     this.url="https://newsapi.org/v2/top-headlines?country=tr&apiKey=c4162774b9b4413b94c135ca208cea50"
        axios.get(this.url)
       .then(response=>{

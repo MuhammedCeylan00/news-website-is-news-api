@@ -21,15 +21,24 @@ import axios from "axios";
 export default {
   name: 'DetailPage',
   mounted() {
-    console.log("Detail sayfasındayım")
-    console.log(this.category)
-        this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
+    if(this.category!="topheadlines"){
+       this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
        axios.get(this.url)
       .then(response=>{
         this.lists=response.data.articles;
         console.log(this.lists);
         console.log("id>>>>>>>>>>>>>>>",this.id)
       })
+    }else{
+       this.url="https://newsapi.org/v2/top-headlines?country=tr&apiKey=c4162774b9b4413b94c135ca208cea50"
+       axios.get(this.url)
+      .then(response=>{
+        this.lists=response.data.articles;
+        console.log(this.lists);
+        console.log("id>>>>>>>>>>>>>>>",this.id)
+      })
+    }
+    
   },
     
   data(){
