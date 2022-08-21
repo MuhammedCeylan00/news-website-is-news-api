@@ -2,7 +2,14 @@
     <div id="NewsApi">
        <div class="header">
         <h1>News</h1>
-        <div class="buttons">
+        <!-- <ButtonComponents category="Business"></ButtonComponents>
+        <ButtonComponents category="Entartaintment"></ButtonComponents>
+        <ButtonComponents category="General"></ButtonComponents>
+        <ButtonComponents category="Health"></ButtonComponents>
+        <ButtonComponents category="Science"></ButtonComponents>
+        <ButtonComponents category="Sports"></ButtonComponents>-->
+        <ButtonComponents category="Technology"></ButtonComponents> 
+       <div class="buttons">
         <button @click="Busines()">Busines</button>
         <button @click="Entartaintment()">Entertainment</button>
         <button @click="General()">General</button>
@@ -31,85 +38,76 @@
 
 <script>
 import axios from "axios";
+import ButtonComponents from "@/components/ButtonComponents.vue";
 
 
 export default {
-  name: 'NewsApi',
-  mounted() {
-    this.category="topheadlines";
-    this.url="https://newsapi.org/v2/top-headlines?country=tr&apiKey=c4162774b9b4413b94c135ca208cea50"
-       axios.get(this.url)
-      .then(response=>{
-        this.lists=response.data.articles;
-        console.log(this.lists);
-        this.urlData="topheadlines"
-      })
-  },
-    
-  data(){
-        return{
-      lists:[
-      ],
-    category:"business",
-    okundu:"",
-    urlData:""
-    }
-   
-  },
-  methods:{
-    GetData(){
-      this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-      axios.get(this.url)
-      .then(response=>{
-      this.lists=response.data.articles;
-      console.log(this.lists);
-      })
+    name: "NewsApi",
+    mounted() {
+        this.category = "topheadlines";
+        this.url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=c4162774b9b4413b94c135ca208cea50";
+        axios.get(this.url)
+            .then(response => {
+            this.lists = response.data.articles;
+            console.log(this.lists);
+            this.urlData = "topheadlines";
+        });
     },
-    Busines(){ 
-    this.urlData="business"
-    this.category="business",
-    this.GetData()
-    this.okundu="okundu"
+    data() {
+        return {
+            lists: [],
+            category: "business",
+            okundu: "",
+            urlData: ""
+        };
     },
-    Entartaintment(){
-      this.urlData="entertainment"
-      this.category="entertainment",
-      this.GetData()
+    methods: {
+        GetData() {
+            this.url = "https://newsapi.org/v2/top-headlines?country=tr&category=" + this.category + "&apiKey=c4162774b9b4413b94c135ca208cea50";
+            axios.get(this.url)
+                .then(response => {
+                this.lists = response.data.articles;
+                console.log(this.lists);
+            });
+        },
+        Busines() {
+            this.urlData = "business";
+            this.category = "business",
+                this.GetData();
+            this.okundu = "okundu";
+        },
+        Entartaintment() {
+            this.urlData = "entertainment";
+            this.category = "entertainment",
+                this.GetData();
+        },
+        General() {
+            this.urlData = "general";
+            this.category = "general",
+                this.GetData();
+        },
+        Health() {
+            this.urlData = "health";
+            this.category = "health",
+                this.GetData();
+        },
+        Science() {
+            this.urlData = "science";
+            this.category = "science",
+                this.GetData();
+        },
+        Sports() {
+            this.urlData = "sports";
+            this.category = "sports",
+                this.GetData();
+        },
+        Technology() {
+            this.urlData = "technology";
+            this.category = "technology",
+                this.GetData();
+        }
     },
-    General(){
-      this.urlData="general"
-      this.category="general",
-      this.GetData()
-    },
-    Health(){
-      this.urlData="health"
-      this.category="health",
-      this.GetData()
-    },
-    Science(){
-      this.urlData="science"
-        this.category="science",
-      //    this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-      //    axios.get(this.url)
-      // .then(response=>{
-      //   this.lists=response.data.articles;
-      //   console.log(response);
-      // })
-      this.GetData()
-    },
-    Sports(){
-      this.urlData="sports";
-      this.category="sports",
-      this.GetData()
-    },
-    Technology(){
-      this.urlData="technology"
-      this.category="technology",
-      this.GetData()
-    }
-
-    }
-    
+    components: { ButtonComponents }
 }
 </script>
 
