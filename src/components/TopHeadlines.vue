@@ -1,6 +1,6 @@
 <template>
-    <div id="ScienceDetail">
-       <div class="container2">
+    <div id="TopHeadlines">
+    <div class="container2">
       <h1>News</h1>
 <div class="description">{{lists[id].description}}</div>
 <div class="imgcontent">
@@ -19,9 +19,9 @@ import axios from "axios";
 
 
 export default {
-  name: 'ScienceDetail',
+  name: 'TopHeadlines',
   mounted() {
-        this.url="https://newsapi.org/v2/top-headlines?country=tr&category=science&apiKey=c4162774b9b4413b94c135ca208cea50";
+    this.url="https://newsapi.org/v2/top-headlines?country=tr&apiKey=c4162774b9b4413b94c135ca208cea50"
        axios.get(this.url)
       .then(response=>{
         this.lists=response.data.articles;
@@ -40,8 +40,6 @@ export default {
    
   },
   methods:{
-    
-
     }
     
 }

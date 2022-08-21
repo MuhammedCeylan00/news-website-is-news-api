@@ -6,6 +6,7 @@ import scienceDetail from './components/ScienceDetail';
 import sportsDetail from './components/SportsDetail';
 import technologyDetail from './components/TechnologyDetail';
 import businesDetil from './components/BusinesDetail';
+import topheadlines from './components/TopHeadlines'
 
 export default [
     { path: '/busines/:id', component: businesDetil },
@@ -15,18 +16,6 @@ export default [
     { path: '/science/:id', component: scienceDetail },
     { path: '/sports/:id', component: sportsDetail },
     { path: '/technology/:id', component: technologyDetail },
-    {
-        path: '/',
-        component: newsApi
-    }
+    { path: '/', component: newsApi },
+    { path: '/topheadlines/:id', component: topheadlines }
 ]
-// export default [{
-//         path: '/',
-//         component: newsApi
-//     },
-//     {
-//         path: '/business/:id',
-//         component: businesDetil
-//     }
-
-// ]
