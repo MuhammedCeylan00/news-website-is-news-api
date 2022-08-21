@@ -57,7 +57,7 @@ export default {
   },
   methods:{
     Busines(){
-      this.urlData="busines"
+      this.urlData="business"
       console.log("Business");
         this.category="business",
          this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
@@ -69,7 +69,7 @@ export default {
       this.okundu="okundu"
     },
     Entartaintment(){
-      this.urlData="entartaintment"
+      this.urlData="entertainment"
       console.log("Entartaintment");
         this.category="entertainment",
          this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";

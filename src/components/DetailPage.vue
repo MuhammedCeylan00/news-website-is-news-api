@@ -1,6 +1,6 @@
 <template>
-    <div id="ScienceDetail">
-       <div class="container2">
+    <div id="DetailPage">
+      <div class="container2">
       <h1>News</h1>
 <div class="description">{{lists[id].description}}</div>
 <div class="imgcontent">
@@ -11,7 +11,7 @@
 </div>
          <p>{{lists[id].description}}</p>
          </div>
-    </div>
+       </div>
 </template>
 
 <script>
@@ -19,9 +19,11 @@ import axios from "axios";
 
 
 export default {
-  name: 'ScienceDetail',
+  name: 'DetailPage',
   mounted() {
-        this.url="https://newsapi.org/v2/top-headlines?country=tr&category=science&apiKey=c4162774b9b4413b94c135ca208cea50";
+    console.log("Detail sayfasındayım")
+    console.log(this.category)
+        this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
        axios.get(this.url)
       .then(response=>{
         this.lists=response.data.articles;
@@ -35,10 +37,12 @@ export default {
       lists:[
       ],
       id:this.$route.params.id,
+      category:this.$route.params.category,
       okundu:""
     }
    
   },
+
   methods:{
     
 
@@ -46,7 +50,6 @@ export default {
     
 }
 </script>
-
 <style>
 .container2{
   display: flex;
