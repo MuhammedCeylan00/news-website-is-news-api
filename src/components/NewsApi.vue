@@ -3,7 +3,7 @@
        <div class="header">
         <h1>News</h1>
         <div class="buttons">
-          <button @click="Busines()">Busines</button>
+        <button @click="Busines()">Busines</button>
         <button @click="Entartaintment()">Entertainment</button>
         <button @click="General()">General</button>
         <button @click="Health()">Health</button>
@@ -57,83 +57,55 @@ export default {
    
   },
   methods:{
-    Busines(){
-      this.urlData="business"
-      console.log("Business");
-        this.category="business",
-         this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-         axios.get(this.url)
+    GetData(){
+      this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
+      axios.get(this.url)
       .then(response=>{
-        this.lists=response.data.articles;
-        console.log(this.lists);
+      this.lists=response.data.articles;
+      console.log(this.lists);
       })
-      this.okundu="okundu"
+    },
+    Busines(){ 
+    this.urlData="business"
+    this.category="business",
+    this.GetData()
+    this.okundu="okundu"
     },
     Entartaintment(){
       this.urlData="entertainment"
-      console.log("Entartaintment");
-        this.category="entertainment",
-         this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-         axios.get(this.url)
-      .then(response=>{
-        this.lists=response.data.articles;
-        console.log(response);
-      })
+      this.category="entertainment",
+      this.GetData()
     },
     General(){
       this.urlData="general"
-       console.log("General");
-        this.category="general",
-         this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-         axios.get(this.url)
-      .then(response=>{
-        this.lists=response.data.articles;
-        console.log(response);
-      })
+      this.category="general",
+      this.GetData()
     },
     Health(){
       this.urlData="health"
-      console.log("Health");
-        this.category="health",
-         this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-         axios.get(this.url)
-      .then(response=>{
-        this.lists=response.data.articles;
-        console.log(response);
-      })
+      this.category="health",
+      this.GetData()
     },
     Science(){
       this.urlData="science"
-      console.log("Science");
         this.category="science",
-         this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-         axios.get(this.url)
-      .then(response=>{
-        this.lists=response.data.articles;
-        console.log(response);
-      })
+      //    this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
+      //    axios.get(this.url)
+      // .then(response=>{
+      //   this.lists=response.data.articles;
+      //   console.log(response);
+      // })
+      this.GetData()
     },
     Sports(){
       this.urlData="sports";
-      console.log("Sports");
-        this.category="sports",
-         this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-         axios.get(this.url)
-      .then(response=>{
-        this.lists=response.data.articles;
-        console.log(response);
-      })
+      this.category="sports",
+      this.GetData()
     },
     Technology(){
       this.urlData="technology"
-      console.log("Technology");
-        this.category="technology",
-         this.url="https://newsapi.org/v2/top-headlines?country=tr&category="+this.category+"&apiKey=c4162774b9b4413b94c135ca208cea50";
-         axios.get(this.url)
-      .then(response=>{
-        this.lists=response.data.articles;
-        console.log(response);
-      })
+      this.category="technology",
+      this.GetData()
     }
 
     }

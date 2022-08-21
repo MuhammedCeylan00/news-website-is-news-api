@@ -8,7 +8,7 @@
         <div class="content">
           {{lists[id].content}}
         </div>
-</div>
+        </div>
          <p>{{lists[id].description}}</p>
          </div>
        </div>
@@ -16,8 +16,6 @@
 
 <script>
 import axios from "axios";
-
-
 export default {
   name: 'DetailPage',
   mounted() {
@@ -49,14 +47,10 @@ export default {
       category:this.$route.params.category,
       okundu:""
     }
-   
   },
 
   methods:{
-    
-
-    }
-    
+    } 
 }
 </script>
 <style>
