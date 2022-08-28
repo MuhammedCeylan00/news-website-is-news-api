@@ -1,8 +1,8 @@
 <template>
     <div id="NewsApi">
+      <h1>News</h1>
        <div class="header">
-        <h1>News</h1>
-      <ButtonComponents :category="category" 
+      <ButtonComponents v-for='(item,index) in categories' :key="index" :category="item" 
       @updateCategoryButton="updateCategory" />
         <!-- <button @click="updateCategory('business')">Busines</button>
         <button @click="updateCategory('entertainment')">Entertainment</button>
@@ -50,7 +50,8 @@ export default {
             category: "business",
             okundu: "",
             urlData: "",
-            getCategory:""
+            getCategory:"",
+            categories:["business","entertainment","general","health","science","sports","technology"]
         };
     },
     methods: {
@@ -77,13 +78,9 @@ export default {
 }
 
 .header{
-  display: flex;
-    margin-top: 0px;
-    height: 3rem;
-    padding-bottom: 2rem;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+ display: flex;
+ justify-content: center;
+ padding-bottom: 10px;
 }
 .header h1{
 color: rgb(14, 4, 23);
