@@ -2,22 +2,16 @@
     <div id="NewsApi">
        <div class="header">
         <h1>News</h1>
-        <!-- <ButtonComponents category="Business"></ButtonComponents>
-        <ButtonComponents category="Entartaintment"></ButtonComponents>
-        <ButtonComponents category="General"></ButtonComponents>
-        <ButtonComponents category="Health"></ButtonComponents>
-        <ButtonComponents category="Science"></ButtonComponents>
-        <ButtonComponents category="Sports"></ButtonComponents>-->
-        <ButtonComponents category="Technology"></ButtonComponents> 
-       <div class="buttons">
-        <button @click="Busines()">Busines</button>
+       <!-- <div class="buttons">
+        <button @click="updateCategory($business)">Busines</button>
         <button @click="Entartaintment()">Entertainment</button>
         <button @click="General()">General</button>
         <button @click="Health()">Health</button>
         <button @click="Science()">Science</button>
         <button @click="Sports()">Sports</button>
         <button @click="Technology()">Technology</button>
-        </div>
+        </div> -->
+        <ButtonComponents v-for='(item,i) in category2' :key="i">{{item}}</ButtonComponents>
        </div>
        <div class="container">
         <div v-for='(item,index) in lists' :key="index" class="cards">
@@ -38,7 +32,7 @@
 
 <script>
 import axios from "axios";
-import ButtonComponents from "@/components/ButtonComponents.vue";
+
 
 
 export default {
@@ -58,10 +52,20 @@ export default {
             lists: [],
             category: "business",
             okundu: "",
-            urlData: ""
+            urlData: "",
+            //category2:["business","entertainment","general","health","science","sports","technology"]
         };
     },
     methods: {
+        updateCategory(getCategory) {
+            this.category = getCategory;
+            this.url = "https://newsapi.org/v2/top-headlines?country=tr&category=" + this.category + "&apiKey=c4162774b9b4413b94c135ca208cea50";
+            axios.get(this.url)
+                .then(response => {
+                this.lists = response.data.articles;
+                console.log(this.lists);
+            });
+        },
         GetData() {
             this.url = "https://newsapi.org/v2/top-headlines?country=tr&category=" + this.category + "&apiKey=c4162774b9b4413b94c135ca208cea50";
             axios.get(this.url)
@@ -107,7 +111,7 @@ export default {
                 this.GetData();
         }
     },
-    components: { ButtonComponents }
+    components: { ButtonComponents, ButtonComponents, ButtonComponents }
 }
 </script>
 
@@ -136,7 +140,7 @@ color: rgb(14, 4, 23);
 .buttons{
   width: 100%;
 }
-button{
+.buttons{
     width: 10%;
     margin: 0.5rem;
     background-color: rgb(63, 63, 191);
@@ -147,6 +151,7 @@ button{
     font-size: 70%;
     font-weight: bold;
 }
+
 .container{
    max-width: 1250px;
    margin: auto;
