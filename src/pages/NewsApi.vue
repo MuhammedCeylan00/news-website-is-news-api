@@ -4,13 +4,6 @@
        <div class="header">
       <ButtonComponents v-for='(item,index) in categories' :key="index" :category="item" 
       @updateCategoryButton="updateCategory" />
-        <!-- <button @click="updateCategory('business')">Busines</button>
-        <button @click="updateCategory('entertainment')">Entertainment</button>
-        <button @click="updateCategory('general')">General</button>
-        <button @click="updateCategory('health')">Health</button>
-        <button @click="updateCategory('science')">Science</button>
-        <button @click="updateCategory('sports')">Sports</button>
-        <button @click="updateCategory('technology')">Technology</button> -->
        </div>
        <div class="container">
         <div v-for='(item,index) in lists' :key="index" class="cards">
