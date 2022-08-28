@@ -2,17 +2,16 @@
     <div id="NewsApi">
        <div class="header">
         <h1>News</h1>
-       <div class="buttons">
-        <button @click="updateCategory('business')">Busines</button>
+      <ButtonComponents :category="category" 
+      @updateCategoryButton="updateCategory" />
+        <!-- <button @click="updateCategory('business')">Busines</button>
         <button @click="updateCategory('entertainment')">Entertainment</button>
         <button @click="updateCategory('general')">General</button>
         <button @click="updateCategory('health')">Health</button>
         <button @click="updateCategory('science')">Science</button>
         <button @click="updateCategory('sports')">Sports</button>
-        <button @click="updateCategory('technology')">Technology</button>
-        </div>
+        <button @click="updateCategory('technology')">Technology</button> -->
        </div>
-       <ButtonComponents></ButtonComponents>
        <div class="container">
         <div v-for='(item,index) in lists' :key="index" class="cards">
         <div class="author">{{item.author}}</div>
@@ -37,7 +36,6 @@ import ButtonComponents from "@/components/ButtonComponents.vue";
 export default {
     name: "NewsApi",
     mounted() {
-        this.category = "topheadlines";
         this.url = "https://newsapi.org/v2/top-headlines?country=tr&apiKey=c4162774b9b4413b94c135ca208cea50";
         axios.get(this.url)
             .then(response => {
@@ -53,17 +51,16 @@ export default {
             okundu: "",
             urlData: "",
             getCategory:""
-            //category2:["business","entertainment","general","health","science","sports","technology"]
         };
     },
     methods: {
         updateCategory(getCategory) {
-            this.category = getCategory;
-            this.url = "https://newsapi.org/v2/top-headlines?country=tr&category=" + this.category + "&apiKey=c4162774b9b4413b94c135ca208cea50";
+            this.url = "https://newsapi.org/v2/top-headlines?country=tr&category=" + getCategory+ "&apiKey=c4162774b9b4413b94c135ca208cea50";
             axios.get(this.url)
                 .then(response => {
                 this.lists = response.data.articles;
-                console.log(this.lists);
+                console.log(this.url);
+                //console.log(this.lists);
             });
         },
     },

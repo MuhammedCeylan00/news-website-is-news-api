@@ -1,14 +1,18 @@
 <template>
-    <button>{{category}}</button>
+    <div>
+    <button @click="updateCategoryButton">{{category}}</button>
+</div>
 </template>
 
 <script>
 
 export default{
-    props:['category'],
+    props: {
+        category : {type:String}
+    },
      methods: {
-       getCategory(){
-        this.$emit("categories",this.category)
+        updateCategoryButton(){
+        this.$emit('updateCategoryButton',this.category)
        }
     }
     }
@@ -17,8 +21,5 @@ export default{
 
 
 <style>
-button{
-    width: 10px;
-    height: 50px;
-}
+
 </style>
