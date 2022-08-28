@@ -2,17 +2,17 @@
     <div id="NewsApi">
        <div class="header">
         <h1>News</h1>
-       <!-- <div class="buttons">
-        <button @click="updateCategory($business)">Busines</button>
-        <button @click="Entartaintment()">Entertainment</button>
-        <button @click="General()">General</button>
-        <button @click="Health()">Health</button>
-        <button @click="Science()">Science</button>
-        <button @click="Sports()">Sports</button>
-        <button @click="Technology()">Technology</button>
-        </div> -->
-        <ButtonComponents v-for='(item,i) in category2' :key="i">{{item}}</ButtonComponents>
+       <div class="buttons">
+        <button @click="updateCategory('business')">Busines</button>
+        <button @click="updateCategory('entertainment')">Entertainment</button>
+        <button @click="updateCategory('general')">General</button>
+        <button @click="updateCategory('health')">Health</button>
+        <button @click="updateCategory('science')">Science</button>
+        <button @click="updateCategory('sports')">Sports</button>
+        <button @click="updateCategory('technology')">Technology</button>
+        </div>
        </div>
+       <ButtonComponents></ButtonComponents>
        <div class="container">
         <div v-for='(item,index) in lists' :key="index" class="cards">
         <div class="author">{{item.author}}</div>
@@ -32,8 +32,7 @@
 
 <script>
 import axios from "axios";
-
-
+import ButtonComponents from "@/components/ButtonComponents.vue";
 
 export default {
     name: "NewsApi",
@@ -53,6 +52,7 @@ export default {
             category: "business",
             okundu: "",
             urlData: "",
+            getCategory:""
             //category2:["business","entertainment","general","health","science","sports","technology"]
         };
     },
@@ -66,52 +66,8 @@ export default {
                 console.log(this.lists);
             });
         },
-        GetData() {
-            this.url = "https://newsapi.org/v2/top-headlines?country=tr&category=" + this.category + "&apiKey=c4162774b9b4413b94c135ca208cea50";
-            axios.get(this.url)
-                .then(response => {
-                this.lists = response.data.articles;
-                console.log(this.lists);
-            });
-        },
-        Busines() {
-            this.urlData = "business";
-            this.category = "business",
-                this.GetData();
-            this.okundu = "okundu";
-        },
-        Entartaintment() {
-            this.urlData = "entertainment";
-            this.category = "entertainment",
-                this.GetData();
-        },
-        General() {
-            this.urlData = "general";
-            this.category = "general",
-                this.GetData();
-        },
-        Health() {
-            this.urlData = "health";
-            this.category = "health",
-                this.GetData();
-        },
-        Science() {
-            this.urlData = "science";
-            this.category = "science",
-                this.GetData();
-        },
-        Sports() {
-            this.urlData = "sports";
-            this.category = "sports",
-                this.GetData();
-        },
-        Technology() {
-            this.urlData = "technology";
-            this.category = "technology",
-                this.GetData();
-        }
     },
-    components: { ButtonComponents, ButtonComponents, ButtonComponents }
+    components: {  ButtonComponents }
 }
 </script>
 
