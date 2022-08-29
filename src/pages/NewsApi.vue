@@ -13,9 +13,10 @@
         <div class="description">{{item.description}}</div>
           <div class="detail">
             <button>
-            <router-link :to="`${urlData}/${index}`">Detail</router-link>
+            <router-link class="routerLink" :to="`${urlData}/${index}`"><p class="message">detail <span class="readSpan">okundu</span></p>
+            </router-link>
             </button>
-            <span>{{okundu}}</span></div>
+            </div>
             <router-view></router-view>
        </div>
        </div>
@@ -25,7 +26,6 @@
 <script>
 import axios from "axios";
 import ButtonComponents from "@/components/ButtonComponents.vue";
-
 export default {
     name: "NewsApi",
     mounted() {
@@ -41,7 +41,6 @@ export default {
         return {
             lists: [],
             category: "business",
-            okundu: "",
             urlData: "",
             getCategory:"",
             categories:["business","entertainment","general","health","science","sports","technology"]
@@ -54,7 +53,6 @@ export default {
                 .then(response => {
                 this.lists = response.data.articles;
                 console.log(this.url);
-                //console.log(this.lists);
             });
         },
     },
@@ -69,7 +67,11 @@ export default {
     margin: 0;
     padding: 0;
 }
-
+.NewsApi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .header{
  display: flex;
  justify-content: center;
@@ -101,10 +103,12 @@ color: rgb(14, 4, 23);
    
 }
 .cards{
+  align-items: center;
+  justify-content: center;
   margin: 5px;
   float: left;
   width: 400px;
-  height: 550px;
+  height: 600px;
 background-color:rgb(166, 154, 208);
   box-shadow: 5px 5px 2px rgb(134, 106, 233);
   border-radius: 20px;
@@ -130,7 +134,7 @@ background-color:rgb(166, 154, 208);
 .cards .description{
   font-size: 1rem;
   color: black;
-  padding: 0 1rem 1rem 1rem;
+  padding-left: 2.5rem;
 }
 
 .cards .img img{
@@ -143,14 +147,33 @@ background-color:rgb(166, 154, 208);
 }
 .detail{
   padding-bottom: 2rem;
+  height: 30px;
+  color: white;
 }
 .detail button{
   width: 4rem;
   border: none;
   color: white;
-  background-color: aliceblue;
+  background-color: white;
   border-radius: 5px;
+  height: 50px;
 
+}
+.routerLink{
+  text-decoration: none;
+}
+/* .readSpan{
+  color: white;
+  padding-top: 20px;
+  font-style: italic;
+  font-size:15px;
+}  */
+/* .routerLink:visited{
+  color: rgb(255, 0, 0);
+} */
+
+.detail button:visited{
+ background-color: blue;
 }
 
 </style>
